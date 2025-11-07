@@ -27,6 +27,18 @@ En esta etapa se implementaron los **formularios de Registro y Login**, manejand
 
 ---
 
+---
+
+## 🍕 Hito 3 - Renderización dinámica de componentes
+Se implementó la carga dinámica de pizzas desde el archivo `pizzas.js`, 
+utilizando `.map()` para renderizar componentes en `Home.jsx` y `CardPizza.jsx`.
+
+Además, se creó un carrito de compras (`Cart.jsx`) que permite:
+- Aumentar y disminuir la cantidad de productos.
+- Eliminar pizzas al llegar a 0 unidades.
+- Calcular automáticamente el total del pedido.
+
+
 
 ## 🧑‍💻 Autor
 **Medardo Enrique Sanchez Sequera**

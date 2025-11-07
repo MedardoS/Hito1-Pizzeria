@@ -9,8 +9,8 @@ function App() {
   return (
     <>
       <Navbar />
-      <Home />
-      {/* <RegisterPage /> */}
+      {/* <Home /> */}
+      <RegisterPage />
       {/* <LoginPage /> */}
       <Footer />
     </>

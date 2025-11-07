@@ -1,15 +1,20 @@
 import Navbar from "./components/Navbar";
-import Home from "./views/Home";
 import Footer from "./components/Footer";
+import Home from "./components/Home";
+import RegisterPage from "./components/RegisterPage";
+import LoginPage from "./components/LoginPage";
+import "./App.css";
 
-const App = () => {
+function App() {
   return (
     <>
       <Navbar />
       <Home />
+      {/* <RegisterPage /> */}
+      {/* <LoginPage /> */}
       <Footer />
     </>
   );
-};
+}
 
 export default App;

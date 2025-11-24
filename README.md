@@ -38,6 +38,22 @@ Además, se creó un carrito de compras (`Cart.jsx`) que permite:
 - Eliminar pizzas al llegar a 0 unidades.
 - Calcular automáticamente el total del pedido.
 
+## 🌐 Hito 4 – Consumo de API externa
+
+En este hito la aplicación dejó de usar datos locales y comenzó a consumir una **API real** desde un backend propio.
+
+### ✔️ Cambios realizados
+- Se levantó el backend en `http://localhost:5000`.
+- Se consumió el endpoint **GET /api/pizzas** desde `Home.jsx` usando `fetch` y `useEffect`.
+- Se reemplazó el archivo de datos local `pizzas.js` por la información entregada por la API.
+- Se creó el componente `Pizza.jsx` que consume **GET /api/pizzas/p001** y muestra:
+  - Nombre  
+  - Imagen  
+  - Precio  
+  - Ingredientes  
+  - Descripción
+
+El botón “Añadir al carrito” aún no tiene funcionalidad, tal como indica este hito.
 
 
 ## 🧑‍💻 Autor

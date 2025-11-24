@@ -1,17 +1,15 @@
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Cart from "./components/Cart";
+import Pizza from "./components/Pizza";
 // import Home from "./components/Home";
-// import LoginPage from "./components/LoginPage";
-// import RegisterPage from "./components/RegisterPage";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      <Cart />
+      <Pizza />
       <Footer />
-    </div>
+    </>
   );
 }
 

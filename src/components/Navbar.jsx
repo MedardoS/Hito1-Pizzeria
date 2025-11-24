@@ -1,30 +1,21 @@
-const Navbar = () => {
-  const total = 25000;
-  const token = false; // cámbialo a true para probar estado logueado
+import { Link } from "react-router-dom";
 
+const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-dark p-3">
-      <div className="container d-flex justify-content-between align-items-center">
-        <div>
-          <button className="btn btn-outline-light me-2">🍕 Home</button>
-        </div>
-        <div>
-          {token ? (
-            <>
-              <button className="btn btn-outline-light me-2">🔓 Profile</button>
-              <button className="btn btn-outline-light me-2">🔒 Logout</button>
-            </>
-          ) : (
-            <>
-              <button className="btn btn-outline-light me-2">🔐 Login</button>
-              <button className="btn btn-outline-light me-2">🔐 Register</button>
-            </>
-          )}
-          <button className="btn btn-success">
-            🛒 Total: ${total.toLocaleString("es-CL")}
-          </button>
-        </div>
+    <nav className="navbar navbar-dark bg-dark px-4">
+
+      <Link to="/" className="navbar-brand">🍕 Mamma Mía!</Link>
+
+      <div>
+        <Link to="/register" className="btn btn-outline-light me-2">Registro</Link>
+        <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
+        <Link to="/profile" className="btn btn-outline-light me-2">Perfil</Link>
+
+        <Link to="/cart" className="btn btn-success">
+          🛒 Total: $0
+        </Link>
       </div>
+
     </nav>
   );
 };

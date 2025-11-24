@@ -55,6 +55,32 @@ En este hito la aplicación dejó de usar datos locales y comenzó a consumir un
 
 El botón “Añadir al carrito” aún no tiene funcionalidad, tal como indica este hito.
 
+## 🧭 Hito 5 – Implementación de React Router
+
+En esta etapa se incorporó el sistema de enrutamiento con **React Router**, permitiendo navegar entre las diferentes vistas de la aplicación.
+
+### ✔️ Cambios realizados
+- Instalación y configuración de `react-router-dom`.
+- Se movieron los componentes principales a la carpeta `pages/`.
+- Se implementaron las rutas para:
+  - `/` → Home
+  - `/register` → Register
+  - `/login` → Login
+  - `/cart` → Cart
+  - `/pizza/p001` → Pizza (por ahora ID fijo)
+  - `/profile` → Perfil del usuario
+  - `*` → Página NotFound (404)
+
+### ✔️ Nuevos componentes
+- **Profile.jsx:** muestra un email estático y un botón de cierre de sesión.
+- **NotFound.jsx:** página de error con un enlace para volver al Home.
+
+### ✔️ Navbar actualizado
+- Se reemplazaron los `<a>` por `<Link>` de React Router.
+- El botón **🛒 Total** redirige correctamente al carrito (`/cart`).
+
+Este hito permite estructurar la navegación completa de la aplicación para continuar con la lógica de usuario y carrito en los próximos módulos.
+
 
 ## 🧑‍💻 Autor
 **Medardo Enrique Sanchez Sequera**

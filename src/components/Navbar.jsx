@@ -1,21 +1,23 @@
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const { total } = useContext(CartContext);
+
   return (
     <nav className="navbar navbar-dark bg-dark px-4">
+      <Link className="navbar-brand" to="/">🍕 Mamma Mía!</Link>
 
-      <Link to="/" className="navbar-brand">🍕 Mamma Mía!</Link>
+      <div className="d-flex gap-3">
+        <Link to="/register">Registro</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/profile">Perfil</Link>
 
-      <div>
-        <Link to="/register" className="btn btn-outline-light me-2">Registro</Link>
-        <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
-        <Link to="/profile" className="btn btn-outline-light me-2">Perfil</Link>
-
-        <Link to="/cart" className="btn btn-success">
-          🛒 Total: $0
+        <Link className="btn btn-danger" to="/cart">
+          🛒 Total: ${total}
         </Link>
       </div>
-
     </nav>
   );
 };

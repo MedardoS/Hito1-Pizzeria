@@ -81,6 +81,29 @@ En esta etapa se incorporó el sistema de enrutamiento con **React Router**, per
 
 Este hito permite estructurar la navegación completa de la aplicación para continuar con la lógica de usuario y carrito en los próximos módulos.
 
+## 🛒 Hito 6 – Manejo de estado global con Context API
+
+En este hito se implementó el manejo del **carrito de compras** utilizando **React Context**, permitiendo compartir el estado global entre todos los componentes de la aplicación.
+
+### ✔ Funcionalidades desarrolladas:
+- Creación de un **CartContext** para manejar el estado global del carrito.
+- Implementación de un **CartProvider** que administra:
+  - `addToCart()` → añade productos al carrito.
+  - `increase()` → incrementa la cantidad.
+  - `decrease()` → reduce la cantidad y elimina el producto si llega a 0.
+  - `total` → calcula el total de la compra.
+- Consumo del CartContext en:
+  - **Navbar** → muestra el total del carrito en tiempo real.
+  - **Home** → cada card puede añadir productos al carrito.
+  - **Pizza** → permite añadir una pizza desde la vista individual.
+  - **Cart** → muestra los productos agregados, permite sumar/restar y calcular el total.
+- El total mostrado en el navbar y en el carrito es siempre consistente gracias al estado global compartido.
+
+Este hito integra el manejo de estado global en la aplicación, permitiendo un flujo completo del carrito de compras desde cualquier parte del sitio.
+
+
+
+
 
 ## 🧑‍💻 Autor
 **Medardo Enrique Sanchez Sequera**

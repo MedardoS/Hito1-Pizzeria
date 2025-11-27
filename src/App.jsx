@@ -11,23 +11,29 @@ import Pizza from "./pages/Pizza";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 
+// 👉 Importamos el Provider del carrito
+import { CartProvider } from "./context/CartProvider";
+
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
+    // 👉 Envolvemos TODA la app dentro del Provider
+    <CartProvider>
+      <BrowserRouter>
+        <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/pizza/p001" element={<Pizza />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/pizza/p001" element={<Pizza />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
 
-      <Footer />
-    </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

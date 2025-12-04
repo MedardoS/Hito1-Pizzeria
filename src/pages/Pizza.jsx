@@ -1,18 +1,20 @@
 import { useEffect, useState, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 
 const Pizza = () => {
+  const { id } = useParams(); // 👈 obtenemos el id dinámico
   const [pizza, setPizza] = useState(null);
   const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     const fetchPizza = async () => {
-      const res = await fetch("http://localhost:5000/api/pizzas/p001");
+      const res = await fetch(`http://localhost:5000/api/pizzas/${id}`);
       const data = await res.json();
       setPizza(data);
     };
     fetchPizza();
-  }, []);
+  }, [id]);
 
   if (!pizza) return <p>Cargando...</p>;
 

@@ -101,6 +101,26 @@ En este hito se implementó el manejo del **carrito de compras** utilizando **Re
 
 Este hito integra el manejo de estado global en la aplicación, permitiendo un flujo completo del carrito de compras desde cualquier parte del sitio.
 
+## 🔐 Hito 7 – Autenticación con Context API
+
+En este hito se implementó el **manejo de autenticación global** utilizando **UserContext** y React Context API.
+
+### ✔️ Funcionalidades implementadas
+- Creación de **UserContext** y **UserProvider** para manejar:
+  - Email del usuario.
+  - Token recibido desde el backend.
+  - Función `login()` para iniciar sesión.
+  - Función `logout()` para cerrar sesión.
+- Integración del UserProvider en toda la aplicación.
+- El componente **LoginPage** ahora realiza la petición al backend y guarda el token globalmente.
+- El componente **Profile** muestra la información del usuario y permite cerrar sesión.
+- El **Navbar** se actualiza dinámicamente según si el usuario está autenticado o no:
+  - Si NO hay usuario → muestra “Login” y “Register”.
+  - Si hay usuario → muestra “Profile” y “Logout”.
+- Se validó que todo funcione correctamente con el backend local.
+
+### 💡 Resultado
+La aplicación ahora cuenta con un sistema de autenticación global funcional, listo para continuar con la protección de rutas en próximos hitos.
 
 
 

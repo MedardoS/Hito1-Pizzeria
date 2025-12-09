@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
+  const { register } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validaciones según el PDF
     if (!email || !password || !confirmPassword) {
       setMessage("❌ Todos los campos son obligatorios.");
       return;
@@ -25,16 +29,22 @@ const RegisterPage = () => {
       return;
     }
 
-    setMessage("✅ Registro exitoso. ¡Bienvenido a Mamma Mía!");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
+    const resp = await register(email, password);
+
+    if (!resp.ok) {
+      setMessage("❌ " + resp.error);
+      return;
+    }
+
+    setMessage("✅ Registro exitoso. Redirigiendo...");
+    setTimeout(() => navigate("/profile"), 800);
   };
 
   return (
     <section className="auth-section">
       <div className="auth-card">
         <h2>Registro</h2>
+
         <form onSubmit={handleSubmit}>
           <label>Email:</label>
           <input

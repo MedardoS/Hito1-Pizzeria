@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const { login } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -18,15 +23,22 @@ const LoginPage = () => {
       return;
     }
 
-    setMessage("✅ Inicio de sesión exitoso. ¡Bienvenido de nuevo!");
-    setEmail("");
-    setPassword("");
+    const resp = await login(email, password);
+
+    if (!resp.ok) {
+      setMessage("❌ " + resp.error);
+      return;
+    }
+
+    setMessage("✅ Inicio de sesión exitoso.");
+    setTimeout(() => navigate("/profile"), 800);
   };
 
   return (
     <section className="auth-section">
       <div className="auth-card">
         <h2>Iniciar sesión</h2>
+
         <form onSubmit={handleSubmit}>
           <label>Email:</label>
           <input

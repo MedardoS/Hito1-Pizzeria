@@ -1,32 +1,48 @@
-import { Link } from "react-router-dom";
 import { useContext } from "react";
-import { CartContext } from "../context/CartContext";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
+import { CartContext } from "../context/CartContext";
 
 const Navbar = () => {
+  const { token, logout } = useContext(UserContext);     // ⬅️ email removido
   const { total } = useContext(CartContext);
-  const { token, logout } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
 
   return (
     <nav className="navbar navbar-dark bg-dark px-4">
-      <Link className="navbar-brand" to="/">🍕 Mamma Mía!</Link>
+      <Link to="/" className="navbar-brand">
+        🍕 Pizzería Mamma Mía
+      </Link>
 
-      <div className="d-flex gap-3 align-items-center">
-        {token ? (
+      <div className="d-flex gap-3">
+        {!token && (
           <>
-            <Link to="/profile" className="text-white">Perfil</Link>
-            <button className="btn btn-outline-light" onClick={logout}>
-              Logout
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to="/login" className="text-white">Login</Link>
-            <Link to="/register" className="text-white">Register</Link>
+            <Link to="/login" className="btn btn-outline-light">
+              Login
+            </Link>
+            <Link to="/register" className="btn btn-outline-light">
+              Register
+            </Link>
           </>
         )}
 
-        <Link className="btn btn-danger" to="/cart">
+        {token && (
+          <>
+            <Link to="/profile" className="btn btn-outline-light">
+              Profile
+            </Link>
+            <button className="btn btn-danger" onClick={handleLogout}>
+              Logout
+            </button>
+          </>
+        )}
+
+        <Link to="/cart" className="btn btn-success">
           🛒 Total: ${total}
         </Link>
       </div>

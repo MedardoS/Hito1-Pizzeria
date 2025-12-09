@@ -122,6 +122,32 @@ En este hito se implementó el **manejo de autenticación global** utilizando **
 ### 💡 Resultado
 La aplicación ahora cuenta con un sistema de autenticación global funcional, listo para continuar con la protección de rutas en próximos hitos.
 
+## 🔐 Hito 8 – Autenticación real con JWT + Checkout conectado al backend
+
+En este hito se integró la autenticación real utilizando **JWT** y se completó el flujo de compra conectado al backend, reemplazando la lógica simulada del hito anterior.
+
+### ✔️ Funcionalidades implementadas
+- Implementación de peticiones reales a la API:
+  - `POST /api/auth/login` para iniciar sesión.
+  - `POST /api/auth/register` para registrar usuarios.
+  - `GET /api/auth/me` para obtener el perfil del usuario autenticado.
+- El **UserProvider** ahora maneja:
+  - Token JWT y persistencia en `localStorage`.
+  - Email del usuario obtenido desde el backend.
+  - Funciones `login()`, `register()`, `logout()` y `getProfile()`.
+- La sesión del usuario se mantiene activa después de recargar la página.
+- El **Navbar** se actualiza dinámicamente:
+  - Si no hay token → muestra “Login” y “Register”.
+  - Si hay token → muestra “Profile” y “Logout”.
+  - El botón **Logout** limpia la sesión y redirige al Home.
+- En la página **Cart.jsx** se implementó el checkout real:
+  - Envío del carrito mediante `POST /api/checkouts`.
+  - Validación de token en los headers.
+  - Mensaje de compra exitosa.
+  - Redirección automática al Home después del pago.
+
+### 💡 Resultado
+La aplicación queda completamente conectada al backend, con autenticación real mediante JWT, manejo persistente de sesión y un flujo de compra funcional que integra el carrito con el servidor.
 
 
 
